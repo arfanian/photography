@@ -1,9 +1,9 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Фамилия;Имя;;;
-FN:Имя Фамилия
+N:АРФАНЯН;ЛИЗА;;;
+FN:АРФАНЯН
 ORG:Фотограф
 TITLE:Фотограф
-TEL;TYPE=CELL:+7XXXXXXXXXX
+TEL;TYPE=CELL:+79190402894
 URL:https://t.me/ваш_телеграм
 END:VCARD
