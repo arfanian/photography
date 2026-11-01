@@ -5,113 +5,146 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ЛИЗА АРФАНЯН — Фотограф</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #faf9f7;
-            color: #1a1a1a;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f1ea;
+            color: #1c1a17;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             padding: 2rem 1rem;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
         .card {
-            max-width: 420px;
+            max-width: 460px;
             width: 100%;
             text-align: center;
-            background: #ffffff;
-            padding: 3rem 2rem;
-            border-radius: 0;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
-            border: 1px solid #eee;
+            background: #fbf9f4;
+            padding: 3.5rem 2.5rem 3rem;
+            border: 1px solid #e6dfd2;
+            box-shadow: 0 1px 0 rgba(0,0,0,0.02);
+        }
+        .eyebrow {
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #8a8172;
+            margin-bottom: 2.5rem;
+        }
+        .avatar-wrap {
+            position: relative;
+            width: 132px;
+            height: 132px;
+            margin: 0 auto 2rem;
+        }
+        .avatar-wrap::before {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border: 1px solid #e6dfd2;
+            border-radius: 50%;
         }
         .avatar {
-            width: 120px;
-            height: 120px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1.5rem;
-            border: 1px solid #e0e0e0;
-            padding: 3px;
-            background: #fff;
+            display: block;
+            filter: saturate(0.9) contrast(1.02);
         }
         h1 {
-            font-size: 1.6rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 2.6rem;
             font-weight: 400;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.06em;
+            line-height: 1.1;
             text-transform: uppercase;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.9rem;
+        }
+        .divider {
+            width: 32px;
+            height: 1px;
+            background: #c9bfa9;
+            margin: 0 auto 1.1rem;
         }
         .status {
-            font-size: 0.95rem;
-            color: #666;
-            letter-spacing: 0.05em;
+            font-size: 0.7rem;
+            letter-spacing: 0.32em;
             text-transform: uppercase;
-            margin-bottom: 2rem;
-            font-weight: 400;
+            color: #8a8172;
+            margin-bottom: 2.5rem;
         }
         .phone {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            font-weight: 400;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.45rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 2.8rem;
         }
         .phone a {
-            color: #1a1a1a;
+            color: #1c1a17;
             text-decoration: none;
             border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+            transition: border-color 0.25s;
         }
-        .phone a:hover {
-            border-bottom-color: #1a1a1a;
-        }
-        /* Общий контейнер для кнопок: вертикально, одинаковый размер */
+        .phone a:hover { border-bottom-color: #c9bfa9; }
         .buttons {
             display: flex;
             flex-direction: column;
-            align-items: stretch;
             gap: 0.75rem;
-            max-width: 260px;
+            max-width: 280px;
             margin: 0 auto;
         }
         .btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1rem;
-            border: 1px solid #1a1a1a;
-            color: #1a1a1a;
+            gap: 0.6rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid #1c1a17;
+            color: #1c1a17;
             text-decoration: none;
-            font-size: 0.95rem;
-            letter-spacing: 0.03em;
-            transition: background 0.2s, color 0.2s;
-            background: transparent;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
             font-weight: 400;
-            width: 100%;
+            transition: background 0.25s, color 0.25s, border-color 0.25s;
+            background: transparent;
         }
+        .btn i { font-size: 0.9rem; }
         .btn:hover {
-            background: #1a1a1a;
-            color: #ffffff;
+            background: #1c1a17;
+            color: #fbf9f4;
         }
-        .btn i {
-            font-size: 0.95rem;
+        .btn-primary {
+            background: #1c1a17;
+            color: #fbf9f4;
+        }
+        .btn-primary:hover {
+            background: transparent;
+            color: #1c1a17;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <img src="avatar.jpg" alt="ЛИЗА АРФАНЯН" class="avatar">
-        
-        <h1>ЛИЗА АРФАНЯН</h1>
+        <div class="eyebrow">Photography · Portfolio</div>
+        <div class="avatar-wrap">
+            <img src="avatar.jpg" alt="ЛИЗА АРФАНЯН" class="avatar">
+        </div>
+        <h1>Лиза<br>Арфанян</h1>
+        <div class="divider"></div>
         <div class="status">Фотограф</div>
-        
         <div class="phone">
             <a href="tel:+79190402894">+7 (919) 040-28-94</a>
         </div>
-        
         <div class="buttons">
             <a href="https://api.whatsapp.com/send/?phone=79190402894&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="btn">
                 <i class="fab fa-whatsapp"></i> WhatsApp
@@ -119,7 +152,7 @@
             <a href="https://t.me/+79190402894" target="_blank" rel="noopener" class="btn">
                 <i class="fab fa-telegram-plane"></i> Telegram
             </a>
-            <a href="contact.vcf" class="btn" download>
+            <a href="contact.vcf" class="btn btn-primary" download>
                 <i class="fas fa-address-card"></i> Сохранить контакт
             </a>
         </div>
