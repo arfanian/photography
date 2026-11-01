@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Фамилия;Имя;;;
+FN:Имя Фамилия
+ORG:Фотограф
+TITLE:Фотограф
+TEL;TYPE=CELL:+7XXXXXXXXXX
+URL:https://t.me/ваш_телеграм
+END:VCARD
