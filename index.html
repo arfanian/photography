@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лиза Арфанян — Фотограф</title>
+    <title>ЛИЗА АРФАНЯН — Фотограф</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -39,9 +39,10 @@
             background: #fff;
         }
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 400;
-            letter-spacing: -0.02em;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
             margin-bottom: 0.25rem;
         }
         .status {
@@ -66,32 +67,21 @@
         .phone a:hover {
             border-bottom-color: #1a1a1a;
         }
-        /* Иконки соцсетей теперь по размеру сопоставимы с кнопкой */
-        .socials {
+        /* Общий контейнер для кнопок: вертикально, одинаковый размер */
+        .buttons {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.75rem;
+            max-width: 260px;
+            margin: 0 auto;
         }
-        .socials a {
-            display: inline-flex;
+        .btn {
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 2.4rem;
-            height: 2.4rem;
-            border: 1px solid #1a1a1a;
-            color: #1a1a1a;
-            font-size: 0.95rem; /* как текст кнопки «Сохранить контакт» */
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
-        }
-        .socials a:hover {
-            background: #1a1a1a;
-            color: #ffffff;
-        }
-        .save-btn {
-            display: inline-block;
-            padding: 0.8rem 2.2rem;
+            gap: 0.5rem;
+            padding: 0.8rem 1rem;
             border: 1px solid #1a1a1a;
             color: #1a1a1a;
             text-decoration: none;
@@ -100,39 +90,39 @@
             transition: background 0.2s, color 0.2s;
             background: transparent;
             font-weight: 400;
+            width: 100%;
         }
-        .save-btn:hover {
+        .btn:hover {
             background: #1a1a1a;
             color: #ffffff;
         }
-        .save-btn i {
-            margin-right: 0.5rem;
+        .btn i {
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <img src="avatar.jpg" alt="Лиза Арфанян" class="avatar">
+        <img src="avatar.jpg" alt="ЛИЗА АРФАНЯН" class="avatar">
         
-        <h1>Лиза Арфанян</h1>
+        <h1>ЛИЗА АРФАНЯН</h1>
         <div class="status">Фотограф</div>
         
         <div class="phone">
             <a href="tel:+79190402894">+7 (919) 040-28-94</a>
         </div>
         
-        <div class="socials">
-            <a href="https://api.whatsapp.com/send/?phone=79190402894&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
+        <div class="buttons">
+            <a href="https://api.whatsapp.com/send/?phone=79190402894&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="btn">
+                <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-            <a href="https://t.me/+79190402894" target="_blank" rel="noopener" aria-label="Telegram">
-                <i class="fab fa-telegram-plane"></i>
+            <a href="https://t.me/+79190402894" target="_blank" rel="noopener" class="btn">
+                <i class="fab fa-telegram-plane"></i> Telegram
+            </a>
+            <a href="contact.vcf" class="btn" download>
+                <i class="fas fa-address-card"></i> Сохранить контакт
             </a>
         </div>
-        
-        <a href="contact.vcf" class="save-btn" download>
-            <i class="fas fa-address-card"></i> Сохранить контакт
-        </a>
     </div>
 </body>
 </html>
