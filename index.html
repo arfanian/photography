@@ -1,1 +1,145 @@
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Имя Фамилия — Фотограф</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Базовый сброс и типографика в духе coffeexlemons: чисто, много воздуха */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #faf9f7; /* Тёплый белый, как на кофейных сайтах */
+            color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            line-height: 1.5;
+        }
+        .card {
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            background: #ffffff;
+            padding: 3rem 2rem;
+            border-radius: 0; /* Прямые углы для строгости */
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
+        }
+        /* Фото — круглое или квадратное? Сделаем мягкий квадрат со скруглением, как на минималистичных фото-портфолио */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e0e0e0;
+            padding: 3px;
+            background: #fff;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+        .status {
+            font-size: 0.95rem;
+            color: #666;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .phone {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+        .phone a {
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .phone a:hover {
+            border-bottom-color: #1a1a1a;
+        }
+        /* Кнопки соцсетей — минималистичные, с иконками */
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+        .socials a {
+            color: #1a1a1a;
+            font-size: 1.6rem;
+            transition: opacity 0.2s;
+        }
+        .socials a:hover {
+            opacity: 0.6;
+        }
+        /* Кнопка сохранения контакта — как акцентный CTA, но сдержанный */
+        .save-btn {
+            display: inline-block;
+            padding: 0.8rem 2.2rem;
+            border: 1px solid #1a1a1a;
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+            transition: background 0.2s, color 0.2s;
+            background: transparent;
+            font-weight: 400;
+        }
+        .save-btn:hover {
+            background: #1a1a1a;
+            color: #ffffff;
+        }
+        .save-btn i {
+            margin-right: 0.5rem;
+        }
+        /* Подпись внизу, очень тихая */
+        .footer {
+            margin-top: 3rem;
+            font-size: 0.7rem;
+            color: #aaa;
+            letter-spacing: 0.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <!-- Замените avatar.jpg на имя вашего файла, если нужно -->
+        <img src="avatar.jpg" alt="Фотография" class="avatar">
+        
+        <h1>Имя Фамилия</h1>
+        <div class="status">Фотограф</div>
+        
+        <div class="phone">
+            <a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a>
+        </div>
+        
+        <div class="socials">
+            <!-- Замените ссылки на свои -->
+            <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://t.me/ваш_телеграм" target="_blank" rel="noopener" aria-label="Telegram">
+                <i class="fab fa-telegram-plane"></i>
+            </a>
+        </div>
+        
+        <!-- Ссылка на файл contact.vcf -->
+        <a href="contact.vcf" class="save-btn" download>
+            <i class="fas fa-address-card"></i> Сохранить контакт
+        </a>
+        
+        <div class="footer">ФОТОГРАФИЯ</div>
+    </div>
+</body>
+</html>
