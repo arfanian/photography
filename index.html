@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Имя Фамилия — Фотограф</title>
+    <title>Лиза Арфанян — Фотограф</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Базовый сброс и типографика в духе coffeexlemons: чисто, много воздуха */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #faf9f7; /* Тёплый белый, как на кофейных сайтах */
+            background: #faf9f7;
             color: #1a1a1a;
             display: flex;
             align-items: center;
@@ -25,11 +24,10 @@
             text-align: center;
             background: #ffffff;
             padding: 3rem 2rem;
-            border-radius: 0; /* Прямые углы для строгости */
+            border-radius: 0;
             box-shadow: 0 4px 24px rgba(0,0,0,0.04);
             border: 1px solid #eee;
         }
-        /* Фото — круглое или квадратное? Сделаем мягкий квадрат со скруглением, как на минималистичных фото-портфолио */
         .avatar {
             width: 120px;
             height: 120px;
@@ -68,7 +66,6 @@
         .phone a:hover {
             border-bottom-color: #1a1a1a;
         }
-        /* Кнопки соцсетей — минималистичные, с иконками */
         .socials {
             display: flex;
             justify-content: center;
@@ -83,7 +80,6 @@
         .socials a:hover {
             opacity: 0.6;
         }
-        /* Кнопка сохранения контакта — как акцентный CTA, но сдержанный */
         .save-btn {
             display: inline-block;
             padding: 0.8rem 2.2rem;
@@ -103,7 +99,6 @@
         .save-btn i {
             margin-right: 0.5rem;
         }
-        /* Подпись внизу, очень тихая */
         .footer {
             margin-top: 3rem;
             font-size: 0.7rem;
@@ -114,27 +109,24 @@
 </head>
 <body>
     <div class="card">
-        <!-- Замените avatar.jpg на имя вашего файла, если нужно -->
-        <img src="avatar.jpg" alt="Фотография" class="avatar">
+        <img src="avatar.jpg" alt="Лиза Арфанян" class="avatar">
         
-        <h1>Имя Фамилия</h1>
+        <h1>Лиза Арфанян</h1>
         <div class="status">Фотограф</div>
         
         <div class="phone">
-            <a href="tel:+7XXXXXXXXXX">+7 (XXX) XXX-XX-XX</a>
+            <a href="tel:+79190402894">+7 (919) 040-28-94</a>
         </div>
         
         <div class="socials">
-            <!-- Замените ссылки на свои -->
-            <a href="https://wa.me/7XXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <a href="https://api.whatsapp.com/send/?phone=79190402894&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp">
                 <i class="fab fa-whatsapp"></i>
             </a>
-            <a href="https://t.me/ваш_телеграм" target="_blank" rel="noopener" aria-label="Telegram">
+            <a href="https://t.me/+79190402894" target="_blank" rel="noopener" aria-label="Telegram">
                 <i class="fab fa-telegram-plane"></i>
             </a>
         </div>
         
-        <!-- Ссылка на файл contact.vcf -->
         <a href="contact.vcf" class="save-btn" download>
             <i class="fas fa-address-card"></i> Сохранить контакт
         </a>
