@@ -36,7 +36,73 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Фон: сетка правила третей на всю страницу */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(to right, transparent calc(33.333% - 0.5px), rgba(0,0,0,0.07) calc(33.333% - 0.5px), rgba(0,0,0,0.07) calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px), transparent calc(66.666% - 0.5px), rgba(0,0,0,0.07) calc(66.666% - 0.5px), rgba(0,0,0,0.07) calc(66.666% + 0.5px), transparent calc(66.666% + 0.5px)),
+                linear-gradient(to bottom, transparent calc(33.333% - 0.5px), rgba(0,0,0,0.07) calc(33.333% - 0.5px), rgba(0,0,0,0.07) calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px), transparent calc(66.666% - 0.5px), rgba(0,0,0,0.07) calc(66.666% - 0.5px), rgba(0,0,0,0.07) calc(66.666% + 0.5px), transparent calc(66.666% + 0.5px));
+            opacity: 0;
+            animation: fadeTo 1.6s 1.1s ease-out forwards;
+        }
+
+        /* Фон: диафрагма, медленно вращается */
+        .aperture {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: min(135vmin, 1000px);
+            height: min(135vmin, 1000px);
+            pointer-events: none;
+            color: var(--ink);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: fadeTo 2s 0.6s ease-out forwards, spin 160s linear infinite;
+        }
+        .aperture svg { width: 100%; height: 100%; display: block; overflow: visible; }
+        .aperture .blade { fill: none; stroke: currentColor; stroke-width: 0.8; stroke-opacity: 0.13; }
+        .aperture .ring  { fill: none; stroke: currentColor; stroke-width: 0.8; stroke-opacity: 0.13; }
+        .aperture .iris  { fill: none; stroke: var(--burgundy); stroke-width: 1.2; stroke-opacity: 0.45; }
+
+        @keyframes spin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to   { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes fadeTo { to { opacity: 1; } }
+
+        /* Параметры экспозиции внизу страницы */
+        .exif {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: max(1.1rem, env(safe-area-inset-bottom));
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            opacity: 0;
+            animation: fadeTo 1s 2.2s forwards;
+            pointer-events: none;
+        }
+        .exif span:first-child::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            margin-right: 8px;
+            background: var(--burgundy);
+        }
+        @media (max-width: 620px), (max-height: 780px) { .exif { display: none; } }
+
         .card {
+            position: relative;
+            z-index: 1;
             width: 100%;
             max-width: 440px;
             background: var(--card);
@@ -72,6 +138,73 @@
         .mark.tr { top: 14px; right: 14px; border-top-width: 3px; border-right-width: 3px; }
         .mark.bl { bottom: 14px; left: 14px; border-bottom-width: 3px; border-left-width: 3px; }
         .mark.br { bottom: 14px; right: 14px; border-bottom-width: 3px; border-right-width: 3px; }
+
+        /* Сетка третей поверх фото */
+        .thirds {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(to right, transparent calc(33.333% - 0.5px), rgba(255,255,255,0.4) calc(33.333% - 0.5px), rgba(255,255,255,0.4) calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px), transparent calc(66.666% - 0.5px), rgba(255,255,255,0.4) calc(66.666% - 0.5px), rgba(255,255,255,0.4) calc(66.666% + 0.5px), transparent calc(66.666% + 0.5px)),
+                linear-gradient(to bottom, transparent calc(33.333% - 0.5px), rgba(255,255,255,0.4) calc(33.333% - 0.5px), rgba(255,255,255,0.4) calc(33.333% + 0.5px), transparent calc(33.333% + 0.5px), transparent calc(66.666% - 0.5px), rgba(255,255,255,0.4) calc(66.666% - 0.5px), rgba(255,255,255,0.4) calc(66.666% + 0.5px), transparent calc(66.666% + 0.5px));
+            opacity: 0;
+            animation: thirdsIn 1.8s 1.1s ease-out forwards;
+        }
+        @keyframes thirdsIn {
+            0%   { opacity: 0; }
+            30%  { opacity: 1; }
+            100% { opacity: 0.35; }
+        }
+
+        /* Рамка автофокуса: наводится на кадр и фиксируется бургунди */
+        .af {
+            position: absolute;
+            left: 50%;
+            top: 42%;
+            width: 74px;
+            height: 74px;
+            margin: -37px 0 0 -37px;
+            border: 2px solid var(--burgundy);
+            box-shadow: 0 0 0 1px rgba(255,255,255,0.55), inset 0 0 0 1px rgba(255,255,255,0.55);
+            pointer-events: none;
+            opacity: 0;
+            transform: scale(2.6);
+            animation: afLock 1.5s 1.4s cubic-bezier(.3, .7, .2, 1) forwards, afHunt 1s 9s ease-in-out infinite;
+        }
+        .photo.relock-a .af { animation: afLock 0.9s cubic-bezier(.3, .7, .2, 1) forwards; }
+        .photo.relock-b .af { animation: afLockB 0.9s cubic-bezier(.3, .7, .2, 1) forwards; }
+        @keyframes afLock {
+            0%   { opacity: 0; transform: scale(2.6); }
+            35%  { opacity: 1; transform: scale(1.5); }
+            70%  { opacity: 1; transform: scale(0.9); }
+            100% { opacity: 0.9; transform: scale(1); }
+        }
+        @keyframes afLockB {
+            0%   { opacity: 0; transform: scale(2.6); }
+            35%  { opacity: 1; transform: scale(1.5); }
+            70%  { opacity: 1; transform: scale(0.9); }
+            100% { opacity: 0.9; transform: scale(1); }
+        }
+        @keyframes afHunt {
+            0%, 100% { opacity: 0.9; transform: scale(1); }
+            40%      { opacity: 0.4; transform: scale(1.14); }
+            70%      { opacity: 1;   transform: scale(0.96); }
+        }
+
+        /* Вспышка при нажатии на фото */
+        .flash {
+            position: absolute;
+            inset: 0;
+            background: #fff;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .photo.shot .flash { animation: flashOut 0.45s ease-out; }
+        @keyframes flashOut {
+            0%   { opacity: 0.85; }
+            100% { opacity: 0; }
+        }
+        .photo { cursor: pointer; }
 
         @keyframes wipe {
             from { clip-path: inset(0 0 100% 0); }
@@ -221,13 +354,41 @@
         }
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation: none !important; transition: none !important; }
+            body::before, .aperture, .exif { opacity: 1; }
+            .thirds { opacity: 0.35; }
+            .af { opacity: 0.9; transform: none; }
         }
     </style>
 </head>
 <body>
+    <div class="aperture" aria-hidden="true">
+        <svg viewBox="-230 -230 460 460">
+            <circle class="ring" r="220"/>
+            <circle class="ring" r="214"/>
+            <g class="blade-group">
+                <path class="blade" d="M80 0 L-44.4 215.5"/>
+                <path class="blade" d="M80 0 L-44.4 215.5" transform="rotate(60)"/>
+                <path class="blade" d="M80 0 L-44.4 215.5" transform="rotate(120)"/>
+                <path class="blade" d="M80 0 L-44.4 215.5" transform="rotate(180)"/>
+                <path class="blade" d="M80 0 L-44.4 215.5" transform="rotate(240)"/>
+                <path class="blade" d="M80 0 L-44.4 215.5" transform="rotate(300)"/>
+            </g>
+            <polygon class="iris" points="80,0 40,69.28 -40,69.28 -80,0 -40,-69.28 40,-69.28"/>
+        </svg>
+    </div>
+
+    <div class="exif" aria-hidden="true">
+        <span>f/1.8</span>
+        <span>1/250</span>
+        <span>ISO 100</span>
+    </div>
+
     <main class="card">
-        <div class="photo">
+        <div class="photo" id="photo">
             <img src="avatar.jpg" alt="Liza Arfanian">
+            <div class="thirds" aria-hidden="true"></div>
+            <div class="af" aria-hidden="true"></div>
+            <div class="flash" aria-hidden="true"></div>
             <span class="mark tl" aria-hidden="true"></span>
             <span class="mark tr" aria-hidden="true"></span>
             <span class="mark bl" aria-hidden="true"></span>
@@ -281,6 +442,17 @@
 
     <script>
         (function () {
+            var photo = document.getElementById('photo');
+            var flip = false;
+            photo.addEventListener('click', function () {
+                photo.classList.remove('shot');
+                void photo.offsetWidth;
+                photo.classList.add('shot');
+                flip = !flip;
+                photo.classList.toggle('relock-a', flip);
+                photo.classList.toggle('relock-b', !flip);
+            });
+
             var toggles = document.querySelectorAll('.row-toggle');
 
             function setState(btn, open) {
